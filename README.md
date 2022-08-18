@@ -22,3 +22,32 @@ As you work through the tests, you are encouraged to view the running React appl
 
 You can view the React application in the browser at
 [localhost:8080](http://localhost:8080)
+
+Tier 1: SinglePet component
+[] renders a pet's name, description, and species passed in as props
+[] renders different name, description, and species if passed different props
+[] renders a 'Toggle Status' button
+[] the 'Toggle Status' button toggles 'Available' to 'Adopted!'
+[] the 'Toggle Status' button toggles 'Adopted!' to 'Available'
+[] the 'Toggle Status' button toggles the 'adopted' css class
+
+Tier 2: PetList component
+[] renders a list of SinglePets
+[] renders a select dropdown with three options: all, cats, dogs
+[] when the filter is set to 'cats', only render SinglePets with cats
+[] when the filter is set to 'dogs', only render SinglePets with dogs
+
+Tier 3: Root component
+[] fetches data from /api/pets once after Root first mounts
+[] renders PetList with data retrieved from /api/pets
+[] displays loading message while waiting for the data
+[] displays error message if the server responds with status code 500
+
+EXTRA CREDIT: Tier 4: DeletePet component
+[] renders a 'Delete' button with delete-pet class
+[] sends a delete request to /api/pets/:petId when user clicks the button
+[] calls props.handleDelete if the delete request is successful
+[] does not call props.handleDelete if the delete request fails
+Integration
+[] SinglePet renders DeletePet
+[] DeletePet removes the deleted pet when clicked

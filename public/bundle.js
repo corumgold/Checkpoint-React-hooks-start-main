@@ -1,6 +1,99 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./petdata.js":
+/*!********************!*\
+  !*** ./petdata.js ***!
+  \********************/
+/***/ ((module) => {
+
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+var pets = [{
+  id: 1,
+  name: 'Rigatoni',
+  description: 'A flaming hot cheetoh in feline form',
+  species: 'cat'
+}, {
+  id: 2,
+  name: 'Cody',
+  description: 'Adorable pug who loves to hug',
+  species: 'dog'
+}, {
+  id: 3,
+  name: 'Frankie',
+  description: 'The snuggliest kitty',
+  species: 'cat'
+}, {
+  id: 4,
+  name: 'Anabelle',
+  description: 'Might eat your couch',
+  species: 'dog'
+}];
+var nextId = pets.length + 1;
+
+var getPets = function getPets() {
+  return [].concat(pets);
+};
+
+var addPet = function addPet(pet) {
+  pets.push(_objectSpread(_objectSpread({}, pet), {}, {
+    id: nextId++
+  }));
+};
+
+var removePet = function removePet(petId) {
+  var id = pets.findIndex(function (pet) {
+    return pet.id === petId;
+  });
+  if (id < 0) throw new Error('Pet Not Found');
+  pets.splice(id, 1);
+};
+
+module.exports = {
+  getPets: getPets,
+  addPet: addPet,
+  removePet: removePet
+};
+
+/***/ }),
+
+/***/ "./src/App.js":
+/*!********************!*\
+  !*** ./src/App.js ***!
+  \********************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_PetList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/PetList */ "./src/components/PetList.js");
+/* harmony import */ var _petdata__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../petdata */ "./petdata.js");
+/* harmony import */ var _petdata__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_petdata__WEBPACK_IMPORTED_MODULE_2__);
+
+ // We'll render these sample pets for now. Later, we'll instead fetch the list
+// of pets from the server! We won't need samplePets after that.
+
+
+
+var App = function App() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Adoption Center"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PetList__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    pets: (_petdata__WEBPACK_IMPORTED_MODULE_2___default())
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
+
+/***/ }),
+
 /***/ "./src/components/PetList.js":
 /*!***********************************!*\
   !*** ./src/components/PetList.js ***!
@@ -37,37 +130,6 @@ function PetList() {
 
 /***/ }),
 
-/***/ "./src/components/Root.js":
-/*!********************************!*\
-  !*** ./src/components/Root.js ***!
-  \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _PetList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PetList */ "./src/components/PetList.js");
-/* harmony import */ var _petdata__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../petdata */ "./src/petdata.js");
-
- // We'll render these sample pets for now. Later, we'll instead fetch the list
-// of pets from the server! We won't need samplePets after that.
-
-
-
-var Root = function Root() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Adoption Center"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_PetList__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    pets: _petdata__WEBPACK_IMPORTED_MODULE_2__["default"]
-  }));
-};
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Root);
-
-/***/ }),
-
 /***/ "./src/components/SinglePet.js":
 /*!*************************************!*\
   !*** ./src/components/SinglePet.js ***!
@@ -90,42 +152,6 @@ function SinglePet() {
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SinglePet);
-
-/***/ }),
-
-/***/ "./src/petdata.js":
-/*!************************!*\
-  !*** ./src/petdata.js ***!
-  \************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-var pets = [{
-  id: 1,
-  name: 'Rigatoni',
-  description: 'A flaming hot cheetoh in feline form',
-  species: 'cat'
-}, {
-  id: 2,
-  name: 'Cody',
-  description: 'Adorable pug who loves to hug',
-  species: 'dog'
-}, {
-  id: 3,
-  name: 'Frankie',
-  description: 'The snuggliest kitty',
-  species: 'cat'
-}, {
-  id: 4,
-  name: 'Anabelle',
-  description: 'Might eat your couch',
-  species: 'dog'
-}];
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (pets);
 
 /***/ }),
 
@@ -49050,6 +49076,39 @@ if (
 
 /***/ }),
 
+/***/ "./node_modules/react-dom/client.js":
+/*!******************************************!*\
+  !*** ./node_modules/react-dom/client.js ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+"use strict";
+
+
+var m = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+if (false) {} else {
+  var i = m.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+  exports.createRoot = function(c, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.createRoot(c, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+  exports.hydrateRoot = function(c, h, o) {
+    i.usingClientEntryPoint = true;
+    try {
+      return m.hydrateRoot(c, h, o);
+    } finally {
+      i.usingClientEntryPoint = false;
+    }
+  };
+}
+
+
+/***/ }),
+
 /***/ "./node_modules/react-dom/index.js":
 /*!*****************************************!*\
   !*** ./node_modules/react-dom/index.js ***!
@@ -53392,8 +53451,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(regenerator_runtime_runtime__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _components_Root__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Root */ "./src/components/Root.js");
+/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./App */ "./src/App.js");
 // You do not need to edit this file!
 // The regenerator runtime allows us to use async await, even in browsers that
 // do not support it. For more details, see:
@@ -53404,12 +53463,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_components_Root__WEBPACK_IMPORTED_MODULE_4__["default"], null);
-};
-
-react_dom__WEBPACK_IMPORTED_MODULE_3__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(App, null), document.getElementById('app'));
+var root = react_dom_client__WEBPACK_IMPORTED_MODULE_3__.createRoot(document.getElementById('app'));
+root.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2___default().createElement(_App__WEBPACK_IMPORTED_MODULE_4__["default"], null));
 })();
 
 /******/ })()
