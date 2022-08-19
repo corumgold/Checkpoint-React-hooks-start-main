@@ -85,9 +85,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Adoption Center"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PetList__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    pets: (_petdata__WEBPACK_IMPORTED_MODULE_2___default())
-  }));
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Adoption Center"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PetList__WEBPACK_IMPORTED_MODULE_1__["default"], null));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
@@ -108,22 +106,63 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _SinglePet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SinglePet */ "./src/components/SinglePet.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
-var cody = {
+ // const cody = {
+//   id: 2,
+//   name: 'Cody',
+//   description: 'Adorable pug who loves to hug',
+//   species: 'dog',
+// };
+
+var pets = [{
+  id: 1,
+  name: 'Rigatoni',
+  description: 'A flaming hot cheetoh in feline form',
+  species: 'cat'
+}, {
   id: 2,
   name: 'Cody',
   description: 'Adorable pug who loves to hug',
   species: 'dog'
-}; // PetList only renders one SinglePet. We'd like it to render a list of pets,
+}, {
+  id: 3,
+  name: 'Frankie',
+  description: 'The snuggliest kitty',
+  species: 'cat'
+}, {
+  id: 4,
+  name: 'Anabelle',
+  description: 'Might eat your couch',
+  species: 'dog'
+}]; // PetList only renders one SinglePet. We'd like it to render a list of pets,
 // passed in as props.pets. Don't forget to add a unique key to each one!
 
 function PetList() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(pets),
+      _React$useState2 = _slicedToArray(_React$useState, 2),
+      list = _React$useState2[0],
+      setList = _React$useState2[1];
+
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "pet-list"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SinglePet__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    pet: cody
-  })));
+  }, list.map(function (pet) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SinglePet__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      key: pet.id,
+      data: pet
+    });
+  }));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PetList);
@@ -145,10 +184,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
 
-function SinglePet() {
+function SinglePet(props) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "single-pet"
-  });
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, props.data.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, props.data.species), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, props.data.description));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SinglePet);
