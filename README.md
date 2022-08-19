@@ -24,15 +24,15 @@ You can view the React application in the browser at
 [localhost:8080](http://localhost:8080)
 
 Tier 1: SinglePet component
-[] renders a pet's name, description, and species passed in as props
-[] renders different name, description, and species if passed different props
-[] renders a 'Toggle Status' button
-[] the 'Toggle Status' button toggles 'Available' to 'Adopted!'
-[] the 'Toggle Status' button toggles 'Adopted!' to 'Available'
+[X] renders a pet's name, description, and species passed in as props
+[X] renders different name, description, and species if passed different props
+[X] renders a 'Toggle Status' button
+[X] the 'Toggle Status' button toggles 'Available' to 'Adopted!'
+[X] the 'Toggle Status' button toggles 'Adopted!' to 'Available'
 [] the 'Toggle Status' button toggles the 'adopted' css class
 
 Tier 2: PetList component
-[] renders a list of SinglePets
+[X] renders a list of SinglePets
 [] renders a select dropdown with three options: all, cats, dogs
 [] when the filter is set to 'cats', only render SinglePets with cats
 [] when the filter is set to 'dogs', only render SinglePets with dogs
