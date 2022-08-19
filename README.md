@@ -29,13 +29,13 @@ Tier 1: SinglePet component
 [X] renders a 'Toggle Status' button
 [X] the 'Toggle Status' button toggles 'Available' to 'Adopted!'
 [X] the 'Toggle Status' button toggles 'Adopted!' to 'Available'
-[] the 'Toggle Status' button toggles the 'adopted' css class
+[X] the 'Toggle Status' button toggles the 'adopted' css class
 
 Tier 2: PetList component
 [X] renders a list of SinglePets
-[] renders a select dropdown with three options: all, cats, dogs
-[] when the filter is set to 'cats', only render SinglePets with cats
-[] when the filter is set to 'dogs', only render SinglePets with dogs
+[X] renders a select dropdown with three options: all, cats, dogs
+[X] when the filter is set to 'cats', only render SinglePets with cats
+[X] when the filter is set to 'dogs', only render SinglePets with dogs
 
 Tier 3: Root component
 [] fetches data from /api/pets once after Root first mounts

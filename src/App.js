@@ -9,7 +9,7 @@ const App = () => {
   return (
     <div>
       <h1>Adoption Center</h1>
-      <PetList data={pets} />
+      <PetList pets={pets} />
     </div>
   );
 };

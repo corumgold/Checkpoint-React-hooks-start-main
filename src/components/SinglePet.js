@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SinglePet(props) {
+function SinglePet({ pet }) {
   const [adopted, setAdopted] = React.useState(false);
 
   function returnClass() {
@@ -9,9 +9,9 @@ function SinglePet(props) {
 
   return (
     <div className={returnClass()}>
-      <h1>{props.data.name}</h1>
-      <p>{props.data.species}</p>
-      <p>{props.data.description}</p>
+      <h1>{pet.name}</h1>
+      <p>{pet.species}</p>
+      <p>{pet.description}</p>
       <hr></hr>
       <p>{adopted ? 'Adopted!' : 'Available'}</p>
       <button
