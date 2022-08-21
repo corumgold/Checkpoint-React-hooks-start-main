@@ -46,8 +46,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _SinglePet__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SinglePet */ "./src/components/SinglePet.js");
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -66,76 +64,41 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function PetList(_ref) {
   var pets = _ref.pets;
-  var options = [{
-    value: '',
-    text: 'All'
-  }, {
-    value: 'dog',
-    text: 'Dogs'
-  }, {
-    value: 'cat',
-    text: 'Cats'
-  }];
 
-  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(options[0]),
+  var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(pets),
       _React$useState2 = _slicedToArray(_React$useState, 2),
-      selected = _React$useState2[0],
-      setSelected = _React$useState2[1];
+      shownPets = _React$useState2[0],
+      setShownPets = _React$useState2[1];
 
-  var _React$useState3 = react__WEBPACK_IMPORTED_MODULE_0___default().useState(pets),
-      _React$useState4 = _slicedToArray(_React$useState3, 2),
-      shownPets = _React$useState4[0],
-      setShownPets = _React$useState4[1];
+  var showPets = function showPets(e) {
+    var choice = e.target.value;
+    var newPets = pets;
 
-  var _React$useState5 = react__WEBPACK_IMPORTED_MODULE_0___default().useState(false),
-      _React$useState6 = _slicedToArray(_React$useState5, 2),
-      change = _React$useState6[0],
-      setChange = _React$useState6[1];
+    if (choice !== 'all') {
+      newPets = newPets.filter(function (pet) {
+        return pet.species == choice;
+      });
+    }
 
-  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
-    console.log('Rerender page');
-  }, [change]);
-
-  var handleChange = function handleChange(event) {
-    setSelected(event.target.value);
+    setShownPets(newPets);
   };
 
-  console.log(selected);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
-    htmlFor: "species-select"
-  }, "Filter by species "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
-    value: selected,
-    onChange: handleChange
-  }, options.map(function (option) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
-      key: option.value,
-      value: option.value
-    }, option.text);
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
+    id: "filters",
+    onChange: showPets
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "all"
+  }, "All"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "dog"
+  }, "Dogs"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("option", {
+    value: "cat"
+  }, "Cats")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: "pet-list"
   }, shownPets.map(function (pet) {
-    switch (true) {
-      case selected === pet.species:
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SinglePet__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: pet.id,
-          pet: pet
-        });
-
-      case !selected:
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SinglePet__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: pet.id,
-          pet: pet
-        });
-
-      case _typeof(selected) === 'object':
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SinglePet__WEBPACK_IMPORTED_MODULE_1__["default"], {
-          key: pet.id,
-          pet: pet
-        });
-
-      case selected !== pet.species:
-        break;
-    }
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_SinglePet__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      key: pet.id,
+      pet: pet
+    });
   })));
 }
 
