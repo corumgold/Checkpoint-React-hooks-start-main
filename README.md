@@ -38,8 +38,8 @@ Tier 2: PetList component
 [X] when the filter is set to 'dogs', only render SinglePets with dogs
 
 Tier 3: Root component
-[] fetches data from /api/pets once after Root first mounts
-[] renders PetList with data retrieved from /api/pets
+[X] fetches data from /api/pets once after Root first mounts
+[X] renders PetList with data retrieved from /api/pets
 [] displays loading message while waiting for the data
 [] displays error message if the server responds with status code 500
 
