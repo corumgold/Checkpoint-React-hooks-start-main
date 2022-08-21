@@ -2523,7 +2523,10 @@ var App = function App() {
               case 0:
                 setIsLoading(true);
                 _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/pets');
+                return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/pets')["catch"](function (error) {
+                  document.getElementById('title').innerHTML = 'Could not find the furry friends! 🙀';
+                  console.log(error.response.data, error.response.status, error.response.headers);
+                });
 
               case 3:
                 response = _context.sent;
@@ -2545,7 +2548,9 @@ var App = function App() {
 
     petFetch();
   }, []);
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, isLoading ? 'Loading Furry Friends' : 'Adoption Center'), isLoading ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, "Loading Furry Friends") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PetList__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
+    id: "title"
+  }, isLoading ? '🐶 Loading Furry Friends! 🐱' : 'Adoption Center'), isLoading ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PetList__WEBPACK_IMPORTED_MODULE_1__["default"], {
     pets: petsData
   }));
 };

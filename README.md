@@ -40,8 +40,8 @@ Tier 2: PetList component
 Tier 3: Root component
 [X] fetches data from /api/pets once after Root first mounts
 [X] renders PetList with data retrieved from /api/pets
-[] displays loading message while waiting for the data
-[] displays error message if the server responds with status code 500
+[X] displays loading message while waiting for the data
+[X] displays error message if the server responds with status code 500
 
 EXTRA CREDIT: Tier 4: DeletePet component
 [] renders a 'Delete' button with delete-pet class

@@ -9,7 +9,15 @@ const App = () => {
   React.useEffect(() => {
     const petFetch = async () => {
       setIsLoading(true);
-      let response = await Axios.get('/api/pets');
+      let response = await Axios.get('/api/pets').catch(function (error) {
+        document.getElementById('title').innerHTML =
+          'Could not find the furry friends! 🙀';
+        console.log(
+          error.response.data,
+          error.response.status,
+          error.response.headers
+        );
+      });
       setPetsData(response.data);
       setIsLoading(false);
     };
@@ -18,8 +26,10 @@ const App = () => {
 
   return (
     <div>
-      <h1>{isLoading ? 'Loading Furry Friends' : 'Adoption Center'}</h1>
-      {isLoading ? <p>Loading Furry Friends</p> : <PetList pets={petsData} />}
+      <h1 id="title">
+        {isLoading ? '🐶 Loading Furry Friends! 🐱' : 'Adoption Center'}
+      </h1>
+      {isLoading ? '' : <PetList pets={petsData} />}
     </div>
   );
 };
