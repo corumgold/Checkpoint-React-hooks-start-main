@@ -48,5 +48,5 @@ EXTRA CREDIT: Tier 4: DeletePet component
 [X] sends a delete request to /api/pets/:petId when user clicks the button
 [] calls props.handleDelete if the delete request is successful
 [] does not call props.handleDelete if the delete request fails integration
-[] SinglePet renders DeletePet
+[X] SinglePet renders DeletePet
 [] DeletePet removes the deleted pet when clicked

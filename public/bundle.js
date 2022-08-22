@@ -2513,46 +2513,47 @@ var App = function App() {
       isLoading = _React$useState4[0],
       setIsLoading = _React$useState4[1];
 
-  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
-    var petFetch = /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-        var response;
-        return _regeneratorRuntime().wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                setIsLoading(true);
-                _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/pets')["catch"](function (error) {
-                  document.getElementById('title').innerHTML = 'Could not find the furry friends! 🙀';
-                  console.log(error.response.data, error.response.status, error.response.headers);
-                });
+  var petFetch = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+      var response;
+      return _regeneratorRuntime().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              setIsLoading(true);
+              _context.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/pets')["catch"](function (error) {
+                document.getElementById('title').innerHTML = 'Could not find the furry friends! 🙀';
+                console.log(error.response.data, error.response.status, error.response.headers);
+              });
 
-              case 3:
-                response = _context.sent;
-                setPetsData(response.data);
-                setIsLoading(false);
-                console.log("Page Rendered!");
+            case 3:
+              response = _context.sent;
+              setPetsData(response.data);
+              setIsLoading(false);
+              console.log('Page Rendered!');
 
-              case 7:
-              case "end":
-                return _context.stop();
-            }
+            case 7:
+            case "end":
+              return _context.stop();
           }
-        }, _callee);
-      }));
+        }
+      }, _callee);
+    }));
 
-      return function petFetch() {
-        return _ref.apply(this, arguments);
-      };
-    }();
+    return function petFetch() {
+      return _ref.apply(this, arguments);
+    };
+  }();
 
+  react__WEBPACK_IMPORTED_MODULE_0___default().useEffect(function () {
     petFetch();
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", {
     id: "title"
   }, isLoading ? '🐶 Loading Furry Friends! 🐱' : 'Adoption Center'), isLoading ? '' : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_components_PetList__WEBPACK_IMPORTED_MODULE_1__["default"], {
-    pets: petsData
+    pets: petsData,
+    petFetch: petFetch
   }));
 };
 
@@ -2632,7 +2633,8 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 // passed in as props.pets. Don't forget to add a unique key to each one!
 
 function PetList(_ref) {
-  var pets = _ref.pets;
+  var pets = _ref.pets,
+      petFetch = _ref.petFetch;
 
   var _React$useState = react__WEBPACK_IMPORTED_MODULE_0___default().useState(pets),
       _React$useState2 = _slicedToArray(_React$useState, 2),
@@ -2654,7 +2656,6 @@ function PetList(_ref) {
 
   var deletePet = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(id) {
-      var activePets;
       return _regeneratorRuntime().wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -2663,10 +2664,9 @@ function PetList(_ref) {
               return axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("/api/pets/".concat(id));
 
             case 2:
-              activePets = shownPets;
-              setShownPets(activePets);
+              petFetch();
 
-            case 4:
+            case 3:
             case "end":
               return _context.stop();
           }
@@ -2748,6 +2748,7 @@ function SinglePet(_ref) {
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
     className: returnClass()
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, pet.name), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, pet.species), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, pet.description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("hr", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("p", null, adopted ? 'Adopted!' : 'Available'), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", {
+    className: "toggle",
     onClick: function onClick() {
       setAdopted(!adopted);
     }

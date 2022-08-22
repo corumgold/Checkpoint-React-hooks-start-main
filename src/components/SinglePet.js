@@ -15,7 +15,7 @@ function SinglePet({ pet, deletePet }) {
       <p>{pet.description}</p>
       <hr></hr>
       <p>{adopted ? 'Adopted!' : 'Available'}</p>
-      <button
+      <button className='toggle'
         onClick={() => {
           setAdopted(!adopted);
         }}
