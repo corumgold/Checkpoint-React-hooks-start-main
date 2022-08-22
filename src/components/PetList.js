@@ -2,6 +2,7 @@ import React from 'react';
 import SinglePet from './SinglePet';
 import Axios from 'axios';
 import axios from 'axios';
+import AddPet from './AddPet';
 
 // PetList only renders one SinglePet. We'd like it to render a list of pets,
 // passed in as props.pets. Don't forget to add a unique key to each one!
@@ -53,18 +54,7 @@ function PetList({ pets, petFetch }) {
         {shownPets.map((pet) => {
           return <SinglePet deletePet={deletePet} key={pet.id} pet={pet} />;
         })}
-        <div className="pet-register">
-          <h1>Register Pet</h1>
-          <form onSubmit={addPet} id="add-pet">
-            <label htmlFor="name">Name</label>
-            <input type="text" name="name" />
-            <label htmlFor="species">Species</label>
-            <input type="text" name="species" />
-            <label htmlFor="description">Description</label>
-            <input type="text" name="description" />
-            <button>Submit</button>
-          </form>
-        </div>
+        <AddPet addPet={addPet} />
       </div>
     </>
   );

@@ -26,6 +26,15 @@ body {
 .pet-register form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+.pet-register form input {
+  margin-bottom: 8px;
+}
+
+.pet-register form button {
+  width: 100px;
 }
 
 .single-pet.adopted {
