@@ -16,6 +16,18 @@ body {
   background-color: lightcoral;
 }
 
+.pet-register {
+  width: 15rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  background-color: greenyellow;
+}
+
+.pet-register form {
+  display: flex;
+  flex-direction: column;
+}
+
 .single-pet.adopted {
   background-color: cornflowerblue;
 }

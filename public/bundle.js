@@ -2629,6 +2629,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
  // PetList only renders one SinglePet. We'd like it to render a list of pets,
 // passed in as props.pets. Don't forget to add a unique key to each one!
 
@@ -2682,6 +2683,40 @@ function PetList(_ref) {
     };
   }();
 
+  var addPet = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e) {
+      var petName, petSpecies, petDescription;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              e.preventDefault();
+              petName = e.target.name.value;
+              petSpecies = e.target.species.value;
+              petDescription = e.target.description.value;
+              _context2.next = 6;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/pets', {
+                name: petName,
+                species: petSpecies,
+                description: petDescription
+              });
+
+            case 6:
+              petFetch();
+
+            case 7:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function addPet(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement((react__WEBPACK_IMPORTED_MODULE_0___default().Fragment), null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("select", {
     id: "filters",
     onChange: showPets
@@ -2699,7 +2734,27 @@ function PetList(_ref) {
       key: pet.id,
       pet: pet
     });
-  })));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "pet-register"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("h1", null, "Register Pet"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("form", {
+    onSubmit: addPet,
+    id: "add-pet"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "name"
+  }, "Name"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "name"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "species"
+  }, "Species"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "species"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("label", {
+    htmlFor: "description"
+  }, "Description"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("input", {
+    type: "text",
+    name: "description"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default().createElement("button", null, "Submit")))));
 }
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (PetList);

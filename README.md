@@ -46,7 +46,7 @@ Tier 3: Root component
 EXTRA CREDIT: Tier 4: DeletePet component
 [X] renders a 'Delete' button with delete-pet class
 [X] sends a delete request to /api/pets/:petId when user clicks the button
-[] calls props.handleDelete if the delete request is successful
-[] does not call props.handleDelete if the delete request fails integration
+[X] calls props.handleDelete if the delete request is successful
+[X] does not call props.handleDelete if the delete request fails integration
 [X] SinglePet renders DeletePet
-[] DeletePet removes the deleted pet when clicked
+[X] DeletePet removes the deleted pet when clicked
