@@ -17,7 +17,14 @@ function PetList({ pets, petFetch }) {
   };
 
   const deletePet = async (id) => {
-    await Axios.delete(`/api/pets/${id}`);
+    await Axios.delete(`/api/pets/${id}`).catch(function (error) {
+      document.getElementById('title').innerHTML = 'Could not delete pet! 🙀';
+      console.log(
+        error.response.data,
+        error.response.status,
+        error.response.headers
+      );
+    });
     petFetch();
   };
 

@@ -2661,7 +2661,10 @@ function PetList(_ref) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("/api/pets/".concat(id));
+              return axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("/api/pets/".concat(id))["catch"](function (error) {
+                document.getElementById('title').innerHTML = 'Could not delete pet! 🙀';
+                console.log(error.response.data, error.response.status, error.response.headers);
+              });
 
             case 2:
               petFetch();
