@@ -1,6 +1,7 @@
 import React from 'react';
+import DeletePet from './DeletePet';
 
-function SinglePet({ pet }) {
+function SinglePet({ pet, deletePet }) {
   const [adopted, setAdopted] = React.useState(false);
 
   function returnClass() {
@@ -21,6 +22,7 @@ function SinglePet({ pet }) {
       >
         Toggle Status
       </button>
+      <DeletePet deletePet={deletePet} pet={pet} />
     </div>
   );
 }

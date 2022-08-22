@@ -44,10 +44,9 @@ Tier 3: Root component
 [X] displays error message if the server responds with status code 500
 
 EXTRA CREDIT: Tier 4: DeletePet component
-[] renders a 'Delete' button with delete-pet class
-[] sends a delete request to /api/pets/:petId when user clicks the button
+[X] renders a 'Delete' button with delete-pet class
+[X] sends a delete request to /api/pets/:petId when user clicks the button
 [] calls props.handleDelete if the delete request is successful
-[] does not call props.handleDelete if the delete request fails
-Integration
+[] does not call props.handleDelete if the delete request fails integration
 [] SinglePet renders DeletePet
 [] DeletePet removes the deleted pet when clicked

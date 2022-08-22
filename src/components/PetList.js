@@ -1,5 +1,6 @@
 import React from 'react';
 import SinglePet from './SinglePet';
+import Axios from 'axios';
 
 // PetList only renders one SinglePet. We'd like it to render a list of pets,
 // passed in as props.pets. Don't forget to add a unique key to each one!
@@ -15,6 +16,12 @@ function PetList({ pets }) {
     setShownPets(newPets);
   };
 
+  const deletePet = async (id) => {
+    await Axios.delete(`/api/pets/${id}`);
+    const activePets = shownPets;
+    setShownPets(activePets);
+  };
+
   return (
     <>
       <select id="filters" onChange={showPets}>
@@ -24,7 +31,7 @@ function PetList({ pets }) {
       </select>
       <div className="pet-list">
         {shownPets.map((pet) => {
-          return <SinglePet key={pet.id} pet={pet} />;
+          return <SinglePet deletePet={deletePet} key={pet.id} pet={pet} />;
         })}
       </div>
     </>

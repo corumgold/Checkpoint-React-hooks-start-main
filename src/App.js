@@ -20,6 +20,7 @@ const App = () => {
       });
       setPetsData(response.data);
       setIsLoading(false);
+      console.log("Page Rendered!")
     };
     petFetch();
   }, []);
