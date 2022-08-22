@@ -2531,9 +2531,8 @@ var App = function App() {
               response = _context.sent;
               setPetsData(response.data);
               setIsLoading(false);
-              console.log('Page Rendered!');
 
-            case 7:
+            case 6:
             case "end":
               return _context.stop();
           }
